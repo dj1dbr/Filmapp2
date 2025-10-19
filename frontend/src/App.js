@@ -6,6 +6,7 @@ import StyleSelector from "@/components/StyleSelector";
 import QualitySelector from "@/components/QualitySelector";
 import GenerationProgress from "@/components/GenerationProgress";
 import VideoPreview from "@/components/VideoPreview";
+import CreditsSection from "@/components/CreditsSection";
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
