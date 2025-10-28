@@ -191,6 +191,30 @@ function App() {
                   </>
                 )}
               </button>
+              
+              {/* Download Button - Below Generate */}
+              {exportInfo && scenes.length > 0 && scenes.some(s => s.video_url && !s.video_url.startsWith('placeholder')) && (
+                <button
+                  data-testid="download-film-btn"
+                  onClick={() => {
+                    const validUrls = scenes
+                      .filter(s => s.video_url && !s.video_url.startsWith('placeholder'))
+                      .map(s => s.video_url);
+                    
+                    validUrls.forEach((url, index) => {
+                      setTimeout(() => {
+                        window.open(url, '_blank');
+                      }, index * 100);
+                    });
+                  }}
+                  className="w-full py-4 px-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold rounded-xl shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-3 text-lg group"
+                >
+                  <svg className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  <span>Film herunterladen ({scenes.filter(s => s.video_url && !s.video_url.startsWith('placeholder')).length} Szenen)</span>
+                </button>
+              )}
             </div>
 
             {/* Right Column - Progress & Preview */}
