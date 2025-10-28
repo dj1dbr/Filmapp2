@@ -142,6 +142,7 @@ function App() {
                 screenplay={screenplay}
                 onScriptChange={setScreenplay}
                 disabled={isGenerating}
+                onOpenSettings={() => setIsSettingsOpen(true)}
               />
               
               <StyleSelector 
