@@ -255,6 +255,12 @@ function App() {
           </div>
         </main>
 
+        {/* Settings Modal */}
+        <SettingsModal 
+          isOpen={isSettingsOpen}
+          onClose={() => setIsSettingsOpen(false)}
+        />
+
         {/* Footer */}
         <footer className="border-t border-slate-800/50 mt-12">
           <div className="max-w-7xl mx-auto px-6 py-6">
