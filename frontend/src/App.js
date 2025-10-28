@@ -26,6 +26,7 @@ function App() {
   const [scenes, setScenes] = useState([]);
   const [startTime, setStartTime] = useState(null);
   const [generationDuration, setGenerationDuration] = useState(null);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const handleGenerate = async () => {
     if (!screenplay.trim()) {
