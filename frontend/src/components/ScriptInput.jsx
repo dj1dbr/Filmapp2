@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-const ScriptInput = ({ screenplay, onScriptChange, disabled }) => {
+const ScriptInput = ({ screenplay, onScriptChange, disabled, onOpenSettings }) => {
   const [isDragging, setIsDragging] = useState(false);
 
   const handleDragOver = useCallback((e) => {
