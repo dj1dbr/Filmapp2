@@ -227,12 +227,17 @@ const VideoPreview = ({ videoUrl, scenes, exportInfo }) => {
       )}
       
       {/* Download All Button */}
-      {downloadUrls.length > 0 && (
+      {scenes.length > 0 && scenes.some(s => s.video_url && !s.video_url.startsWith('placeholder')) && (
         <div className="mt-6">
           <button
+            data-testid="download-all-button"
             className="w-full py-3 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl shadow-xl shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 flex items-center justify-center gap-3"
             onClick={() => {
-              downloadUrls.forEach((url, index) => {
+              const validUrls = scenes
+                .filter(s => s.video_url && !s.video_url.startsWith('placeholder'))
+                .map(s => s.video_url);
+              
+              validUrls.forEach((url, index) => {
                 setTimeout(() => {
                   window.open(url, '_blank');
                 }, index * 100);
@@ -242,7 +247,7 @@ const VideoPreview = ({ videoUrl, scenes, exportInfo }) => {
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            <span>Alle Szenen herunterladen ({scenes.length})</span>
+            <span>Alle Szenen herunterladen ({scenes.filter(s => s.video_url && !s.video_url.startsWith('placeholder')).length})</span>
           </button>
         </div>
       )}
