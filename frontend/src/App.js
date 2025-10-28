@@ -174,6 +174,13 @@ function App() {
               {/* Credits Section - After Settings */}
               <CreditsSection />
               
+              {/* Cost Estimator - After Credits */}
+              <CostEstimator 
+                screenplay={screenplay}
+                selectedQuality={selectedQuality}
+                selectedStyle={selectedStyle}
+              />
+              
               <button
                 data-testid="generate-film-btn"
                 onClick={handleGenerate}
